@@ -1,0 +1,132 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello EtudiantController!
+{% endblock %}
+
+{% block body %}
+	<div class="page-wrapper">
+		<div class="content container-fluid">
+			<div class="row">
+				<div class="col-sm-4 col-xs-3">
+					<h4 class="page-title">Etudiants</h4>
+				</div>
+				<div class="col-sm-8 col-xs-9 text-right m-b-20">
+					<a href="{{ path('user_create') }}" class="btn btn-primary rounded pull-right">
+						<i class="fa fa-plus"></i>
+						Ajouter</a>
+					<div class="view-icons">
+						<a href="clients.html" class="grid-view btn btn-link">
+							<i class="fa fa-th"></i>
+						</a>
+						<a href="clients-list.html" class="list-view btn btn-link active">
+							<i class="fa fa-bars"></i>
+						</a>
+					</div>
+				</div>
+			</div>
+			<div class="row filter-row">
+				<div class="col-sm-3 col-xs-6">
+					<div class="form-group form-focus">
+						<label class="control-label">Nom & Prénom</label>
+						<input type="text" class="form-control floating">
+					</div>
+				</div>
+				<div class="col-sm-3 col-xs-6">
+					<div class="form-group form-focus">
+						<label class="control-label">Filière</label>
+						<input type="text" class="form-control floating">
+					</div>
+				</div>
+				<div class="col-sm-3 col-xs-6">
+					<div class="form-group form-focus select-focus">
+						<label class="control-label">Classe</label>
+						<select class="select floating">
+							<option>Sélectionnez</option>
+							<option>Global Technologies</option>
+							<option>Delta Infotech</option>
+						</select>
+					</div>
+				</div>
+				<div class="col-sm-3 col-xs-6">
+					<a href="#" class="btn btn-success btn-block">
+						Chercher
+					</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-responsive">
+						<table class="table table-striped custom-table datatable">
+							<thead>
+								<tr>
+									<th>Nom & Prénom</th>
+									<th>Filière</th>
+									<th>Classe</th>
+									<th>Email</th>
+									<th>Téléphone</th>
+									<th>Statut</th>
+									<th class="text-right">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for user in users %}
+									<tr>
+										<td>
+											<a href="profile.html" class="avatar"><img src="assets/img/user7.png" alt=""></a>
+											<h2>
+												<a href="profile.html">{{ user.Nom }} {{user.prenom }}</a>
+											</h2>
+										</td>
+										<td>Informatique</td>
+										<td>Bachelor IRS</td>
+										<td>{{ user.email }}</td>
+										<td>{{ user.tel }}</td>
+										<td>
+											<div class="dropdown action-label">
+												<a class="btn btn-white btn-sm rounded dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+													<i class="fa fa-dot-circle-o text-success"></i>
+													Active
+													<i class="caret"></i>
+												</a>
+												<ul class="dropdown-menu">
+													<li>
+														<a href="#">
+															<i class="fa fa-dot-circle-o text-success"></i>
+															Active</a>
+													</li>
+													<li>
+														<a href="#">
+															<i class="fa fa-dot-circle-o text-danger"></i>
+															Inactive</a>
+													</li>
+												</ul>
+											</div>
+										</td>
+										<td class="text-right">
+											<div class="dropdown">
+												<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+													<i class="fa fa-ellipsis-v"></i>
+												</a>
+												<ul class="dropdown-menu pull-right">
+													<li>
+														<a href="#" data-toggle="modal" data-target="#edit_client">
+															<i class="fa fa-pencil m-r-5"></i>
+															Edit</a>
+													</li>
+													<li>
+														<a href="#" data-toggle="modal" data-target="#delete_client">
+															<i class="fa fa-trash-o m-r-5"></i>
+															Delete</a>
+													</li>
+												</ul>
+											</div>
+										</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	{% endblock %}

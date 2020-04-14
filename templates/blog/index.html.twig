@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Tous les blogs
+{% endblock %}
+
+{% block body %}
+	<div class="page-wrapper">
+		<div class="content container-fluid">
+			<div class="row">
+				<div class="col-xs-8">
+					<h4 class="page-title">Blogs</h4>
+				</div>
+				<div class="col-xs-4 text-right m-b-30">
+					<a href="#" class="btn btn-primary rounded pull-right" data-toggle="modal" data-target="#add_ticket">Ajouter</a>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div class="table-responsive">
+						<table class="table table-striped custom-table m-b-0 datatable">
+							<thead>
+								<tr>
+									<th>Blog</th>
+									<th>Crée par</th>
+									<th>Description</th>
+									<th>Nombre d'articles</th>
+									<th>Dernier article</th>
+									<th class="text-right">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for blog in blogs %}
+									<tr>
+										<td>
+											<a href="{{ path('blog_show', {'titre': blog.titre}) }}">{{ blog.titre }}</a>
+										</td>
+										<td>Administrateur</td>
+										<td>{{ blog.Description }}</td>
+										<td>{{ blog.articles.count }}</td>
+										<td>
+											<a href="#">{{ blog.articles.last.titre }}</a>
+										</td>
+
+										<td class="text-right">
+											<div class="dropdown">
+												<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+													<i class="fa fa-ellipsis-v"></i>
+												</a>
+												<ul class="dropdown-menu pull-right">
+													<li>
+														<a href="{{ path('blog_edit', {'id': blog.id}) }}">
+															<i class="fa fa-pencil m-r-5"></i>
+															Edit</a>
+													</li>
+													<li>
+														<a href="#" title="Delete" data-toggle="modal" data-target="#delete_ticket{{ blog.id }}">
+															<i class="fa fa-trash-o m-r-5"></i>
+															Delete</a>
+													</li>
+												</ul>
+												<div id="delete_ticket{{ blog.id }}" class="modal custom-modal fade" role="dialog">
+													<div class="modal-dialog">
+														<div class="modal-content modal-md">
+															<div class="modal-header">
+																<h4 class="modal-title">Delete
+																</h4>
+															</div>
+																<div class="modal-body card-box">
+																	<p>Are you sure want to delete {{ blog.titre }}? All the articles relating to the blog will be deleted as well.</p>
+																	<div class="m-t-20">
+																		<a href="#" class="btn btn-default" data-dismiss="modal">Close</a>
+																		<a href="{{ path('blog_delete', {'id': blog.id}) }}" type="submit" class="btn btn-danger">Delete</a>
+																	</div>
+																</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+
+
+		{% endblock %}

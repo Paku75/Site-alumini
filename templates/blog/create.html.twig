@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% form_theme formBlog 'bootstrap_4_layout.html.twig' %}
+
+{% block body %}
+<div class="form" style="padding-left:300px; padding-top:100px;">
+    {% if editMode %}
+        <h1>Modifier le blog</h1>
+    {% else %}
+        <h1>Création d'un blog</h1>
+    {% endif %}
+    {{ form_start(formBlog) }}
+
+    {{ form_row(formBlog.titre, {'attr': {'type':"file", 'placeholder': "Titre du blog"}}) }}
+    {{ form_row(formBlog.description, {'attr': {'placeholder': " Description du blog"}}) }}
+    {{ form_row(formBlog.imageMin, {'attr': {'placeholder': "URL de l'image"}}) }}
+    {{ form_row(formBlog.image, {'attr': {'placeholder': "URL de l'image"}}) }}
+
+    <button type="submit" class="btn btn-primary"> 
+        {% if editMode %}
+            Modifier
+        {% else %}
+            Ajouter le blog
+        {% endif %}
+    </button>
+
+    {{ form_end(formBlog) }}
+</div>
+{% endblock %}

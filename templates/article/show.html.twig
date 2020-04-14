@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ article.titre }}{% endblock %}
+
+{% block body %}
+
+<section class="articles" style="padding-left:300px; padding-top:100px;" >
+    <a href="{{ path('article') }}" class="btn btn-info"> Retourner </a>
+    <br><br>
+    <article>
+        <h2>{{ article.titre }}</h2>
+        <div class="metadata">Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('H:i') }} dans le blog {{ article.blog.titre }} </div>
+        <div class="content">
+            <img src="{{ article.image }}" alt="">
+            {{ article.contenu | raw }}
+        </div>
+    </article>
+</section>
+
+<section id="commentaires"style="padding-left:300px; padding-top:100px;" >
+    <h3>Commentaires</h3>
+    {% for commentaire in article.commentaires %}
+    <div class="comment">
+        <div class="row">
+            <div class="col-3">
+                <b>{{ commentaire.user }}</b> (<small>{{commentaire.createdAt | date('d/m/Y à H:i')}}</small>) :
+            </div>
+            <div class="col">
+                {{commentaire.contenu | raw}}
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</section>
+{% endblock %}

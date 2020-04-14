@@ -1,0 +1,45 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ blog.titre }}{% endblock %}
+
+{% block body %}
+
+<section class="blogs" style="padding-left:300px; padding-top:100px;" >
+    <a href="{{ path('blog') }}" class="btn btn-info"> Retourner </a>
+    <br><br>
+    <article>
+        <h2>{{ blog.titre }}</h2>
+        <div class="content">
+            <img src="{{ blog.image }}" alt="">
+            {{ blog.description | raw }}
+        </div>
+    </article>
+    {% for article in blog.articles %}
+        <article>
+                    <div class="col-md-4 col-sm-4 col-xs-6 col-lg-3">
+                        <div class="profile-widget">
+                            <div class="profile-img">
+                                <a href="{{ path('article_show', {'id': article.id}) }}" ><img class="avatar" src="{{ article.image }}"/></a>
+                            </div>
+                            <h4 class="user-name m-t-10 m-b-0 text-ellipsis"><a href="{{ path('article_show', {'id': article.id}) }}">{{ article.titre }}</a></h4>
+                            <a href="{{ path('article_edit', {'id': article.id}) }}" class="btn btn-primary btn-sm m-t-10"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                            <a data-toggle="modal" data-target="#delete{{ article.id }}" class="btn btn-danger btn-sm m-t-10"><i class="fa fa-trash-o m-r-5"></i>Delete</a>
+                        </div>
+                    </div>
+         </article>
+         <div class="modal" id="delete{{ article.id }}" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-body">
+                    <p>Voulez-vous supprimer "{{ article.titre }}" ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+                    <a type="button" href="{{ path('article_delete', {'id': article.id}) }}" class="btn btn-primary">Oui</a>
+                </div>
+                </div>
+            </div>
+        </div>
+		   {% endfor %}
+</section>
+{% endblock %}

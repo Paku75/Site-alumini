@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Tous les articles {% endblock %}
+
+{% block body %}
+ <div class="page-wrapper">
+            <div class="content container-fluid">
+                <div class="row">
+                    <div class="col-sm-4 col-xs-3">
+                        <h4 class="page-title">Clients</h4>
+                    </div>
+                    <div class="col-sm-8 col-xs-9 text-right m-b-20">
+                        <a href="{{ path('article_create') }}" class="btn btn-primary rounded pull-right"><i class="fa fa-plus"></i> Ajouter un article</a>
+                        <div class="view-icons">
+                            <a href="clients.html" class="grid-view btn btn-link active"><i class="fa fa-th"></i></a>
+                            <a href="clients-list.html" class="list-view btn btn-link"><i class="fa fa-bars"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="row filter-row">
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="form-group form-focus">
+                            <label class="control-label">Client ID</label>
+                            <input type="text" class="form-control floating">
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="form-group form-focus">
+                            <label class="control-label">Client Name</label>
+                            <input type="text" class="form-control floating">
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-6">
+                        <div class="form-group form-focus select-focus">
+                            <label class="control-label">Company</label>
+                            <select class="select floating">
+                                <option>Select Company</option>
+                                <option>Global Technologies</option>
+                                <option>Delta Infotech</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-3 col-xs-6">
+                        <a href="#" class="btn btn-success btn-block"> Search </a>
+                    </div>
+                </div>
+                <div class="row staff-grid-row">
+				<section class="articles">
+
+    {% for article in articles %}
+        <article>
+                    <div class="col-md-4 col-sm-4 col-xs-6 col-lg-3">
+                        <div class="profile-widget">
+                            <div class="profile-img">
+                                <a href="{{ path('article_show', {'id': article.id}) }}" ><img class="avatar" src="{{ article.image }}"/></a>
+                            </div>
+                            <h4 class="user-name m-t-10 m-b-0 text-ellipsis"><a href="{{ path('article_show', {'id': article.id}) }}">{{ article.titre }}</a></h4>
+                            <a href="{{ path('article_edit', {'id': article.id}) }}" class="btn btn-primary btn-sm m-t-10"><i class="fa fa-pencil m-r-5"></i> Edit</a>
+                            <a data-toggle="modal" data-target="#delete{{ article.id }}" class="btn btn-danger btn-sm m-t-10"><i class="fa fa-trash-o m-r-5"></i>Delete</a>
+                        </div>
+                    </div>
+         </article>
+         <div class="modal" id="delete{{ article.id }}" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                <div class="modal-body">
+                    <p>Voulez-vous supprimer "{{ article.titre }}" ?</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Non</button>
+                    <a type="button" href="{{ path('article_delete', {'id': article.id}) }}" class="btn btn-primary">Oui</a>
+                </div>
+                </div>
+            </div>
+        </div>
+		   {% endfor %}
+		   </section>
+                         </div>
+                </div>
+            </div>
+        
+    <div class="sidebar-overlay" data-reff=""></div>
+
+
+{% endblock %}
