@@ -1,20 +1,42 @@
-{# {% extends 'front.html.twig' %} #}
-{% extends 'base.html.twig' %}
+{% extends 'front.html.twig' %}
+{# {% extends 'base.html.twig' %} #}
 
 {% form_theme formInscription 'bootstrap_4_layout.html.twig' %}
 
 {% block body %}
-<div class="form" style="padding-left:300px; padding-top:100px;">
-    {{ form_start(formInscription) }}
 
-    {{ form_row(formInscription.nom, {'label': 'Nom d\'utilisateur', 'attr': {'placeholder': 'Nom d\'utilisateur ...'}}) }}
-    {{ form_row(formInscription.prenom, {'label': 'Prénom d\'utilisateur', 'attr': {'placeholder': 'Prénom d\'utilisateur ...'}}) }}
-    {{ form_row(formInscription.login, {'label': 'Login', 'attr': {'placeholder': 'Login ...'}}) }}
-    {{ form_row(formInscription.email, {'label': 'Adresse email', 'attr': {'placeholder': 'Adresse email ...'}}) }}
-    {{ form_row(formInscription.mdp, {'label': 'Mot de passe', 'attr': {'placeholder': 'Mot de passe ...'}}) }}
-    {{ form_row(formInscription.confirm_mdp, {'label': 'Confirmer mot de passe', 'attr': {'placeholder': 'Confirmer ...'}}) }}
+<div class="account-page register text-center">
+            <div class="container">
+                <div class="account-title">
+                    <h4 class="heading-light">Nous sommes heureux de vous voir parmis nous</h4>
+                </div>
+                <div class="account-content">
+                   {{ form_start(formInscription) }}
+								<div class="input-box">
+									{{ form_row(formInscription.nom, {'label': ' ', 'attr': {'placeholder': 'Nom'}}) }}
+								</div>
+								<div class="input-box">
+									{{ form_row(formInscription.prenom, {'label': ' ', 'attr': {'placeholder': 'Prénom'}}) }}
+								</div>
+								<div class="input-box">
+									{{ form_row(formInscription.login, {'label': ' ', 'attr': {'placeholder': 'Login'}}) }}
+								</div>
+								<div class="input-box">
+									{{ form_row(formInscription.email, {'label': ' ', 'attr': {'placeholder': 'E-mail'}}) }}
+								</div>
+								<div class="input-box">
+									{{ form_row(formInscription.mdp.first, {'label': ' ', 'attr': {'placeholder': 'Mot de passe'}}) }}
+								</div>
+								<div class="input-box">
+									{{ form_row(formInscription.mdp.second, {'label': ' ', 'attr': {'placeholder': 'Confirmation mot de passe'}}) }}
+								</div>
+								<div class="buttons-set">
+									<button type="submit" class="btn btn-success">Inscription</button>	
+								</div>
+  
+				{{ form_end(formInscription) }}
+                </div>
+            </div>
+        </div>
 
-    <button type="submit" class="btn btn-success">Inscription</button>
-    {{ form_end(formInscription) }}
-</div>
 {% endblock %}

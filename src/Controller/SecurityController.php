@@ -9,7 +9,12 @@ use Symfony\Component\Routing\Annotation\Route;
 
 use App\Entity\User;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
+use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
+
 use App\Form\RegistrationType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+
 
 class SecurityController extends AbstractController
 {
@@ -26,9 +31,13 @@ class SecurityController extends AbstractController
             ->add('nom')
             ->add('prenom')
             ->add('login')
-            ->add('email')
-            ->add('mdp', PasswordType::class)
-            ->add('confirm_mdp', PasswordType::class)
+            ->add('email', EmailType::class)
+            ->add('mdp', RepeatedType::class, [
+    'type' => PasswordType::class,
+    'invalid_message' => 'Mot de passe non identiques',
+    'options' => ['attr' => ['class' => 'input-box']],
+    'required' => true,
+])
         ->getForm();
 
 $form->handleRequest($request);
@@ -58,5 +67,11 @@ $form->handleRequest($request);
      */
     public function logout()
     {}
-
+/**
+     * @Route("/registrationOk", name="security_registrationOk")
+     */
+    public function registrationOk()
+    {
+		return $this->render('security/registrationOk.html.twig');
+	}
 }
