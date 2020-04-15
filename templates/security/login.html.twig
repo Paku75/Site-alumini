@@ -1,22 +1,27 @@
-{# {% extends 'front.html.twig' %} #}
-{% extends 'base.html.twig' %}
+{% extends 'front.html.twig' %}
+{# {% extends 'base.html.twig' %} #}
 
 {% block body %}
-<div class="form" style="padding-left:300px; padding-top:100px;">
-<h1> Connexion </h1>
-    
-    <form action="{{ path('security_login') }}" method="post">
-        <div class="form-group">
-            <input placeholder="Email" required name="_username" type="text" class="form-control">
-        </div>
 
-        <div class="form-group">
-            <input placeholder="Mot de passe" required name="_password" type="password" class="form-control">
-        </div>
 
-        <div class="form-group">
-            <button type="submit" class="btn btn-success">Connecter</button>
+<div class="account-page login text-center">
+            <div class="container">
+                <div class="account-title">
+                    <h4 class="heading-light">Bienvenue cher ITICien(ne)</h4>
+                </div>
+                <div class="account-content">
+                    <form action="{{ path('security_login') }}" method="post">
+                        <div class="input-box email">
+                            <input type="text" required name="_username" placeholder="Email">
+                        </div>
+                        <div class="input-box password">
+                            <input type="text" required name="_password" placeholder="Mot de passe">
+                        </div>
+                        <div class="buttons-set">
+                            <button type="submit" class="bnt bnt-theme text-regular text-uppercase">Se connecter</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-
-</div>
 {% endblock %}

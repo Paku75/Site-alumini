@@ -8,6 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
 use App\Entity\User;
+use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use App\Form\RegistrationType;
 
 class SecurityController extends AbstractController
@@ -19,7 +20,18 @@ class SecurityController extends AbstractController
     {
         $user = new User();
         
-        $form = $this->createForm(RegistrationType::class, $user);
+        // $form = $this->createForm(RegistrationType::class, $user);
+
+        $form = $this->createFormBuilder($user)
+            ->add('nom')
+            ->add('prenom')
+            ->add('login')
+            ->add('email')
+            ->add('mdp', PasswordType::class)
+            ->add('confirm_mdp', PasswordType::class)
+        ->getForm();
+
+$form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()) {
             $manager->persist($user);
@@ -29,7 +41,7 @@ class SecurityController extends AbstractController
         }
 
         return $this->render('security/registration.html.twig', [
-            'form' => $form->createView()
+            'formInscription' => $form->createView()
         ]);
     }
 

@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+    {% block stylesheets %}
     <link rel="icon" href="favicon.ico" type="image/ico" />
     <link rel="stylesheet" type="text/css" href="{{ app.request.getBaseURL() }}/front/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="{{ app.request.getBaseURL() }}/front/css/animate.css" />
@@ -11,11 +13,12 @@
     <link rel="stylesheet" type="text/css" href="{{ app.request.getBaseURL() }}/front/css/meanmenu.css" />
     <link rel="stylesheet" type="text/css" href="{{ app.request.getBaseURL() }}/front/css/font-awesome.min.css" />
     <link rel="stylesheet" href="/front/css/icon-font.min.css">
-    <script src="{{ app.request.getBaseURL() }}/front/js/libs/modernizr.custom.js"></script>
+    {% endblock %}
+
     <title>.:: Commun'itic ::.</title>
 </head>
 <body>
-<div class="main-wrapper">
+<div class="main-wrapper page">
     <!--Begin header ưrapper-->
     <div class="header-wrapper header-position">
         <header id="header" class="container-header type2">
@@ -80,7 +83,7 @@
                     </div>
                     <div class="area-mobile-content visible-sm visible-xs">
                         <div class="logo-mobile">
-                            <a href="#"> <img src="{{ app.request.getBaseURL() }}/front/images/logo-small.png" alt="logo"></a>
+                            <a href="#"> <img src="images/logo-small.png" alt="logo"></a>
                         </div>
                         <div class="mobile-menu ">
                         </div>
@@ -91,9 +94,12 @@
     </div>
     <!--End header wrapper-->
 
+    <!--Begin content wrapper-->
     <div class="content-wrapper">
-        qsdfljq
-    </div>
+        {% block body %}
+        {% endblock %}
+    </div>    
+    <!--End content wrapper-->
 
     <!--Begin footer wrapper-->
     <div class="footer-wrapper type2">
@@ -104,7 +110,7 @@
                         <div class="col-md-4 col-sm-12 col-xs-12 animated footer-col">
                             <div class="contact-footer">
                                 <div class="logo-footer">
-                                    <a href="homepage-1.html"><img src="{{ app.request.getBaseURL() }}/front/images/logo-footer.png" alt=""></a>
+                                    <a href="homepage-1.html"><img src="images/logo-footer.png" alt=""></a>
                                 </div>
                                 <div class="contact-desc">
                                     <p class="text-light">Réseaux des anciens étudiants de l'école ITIC Paris.</p>
@@ -167,7 +173,8 @@
     </div>
     <!--End footer wrapper-->
 </div>
-
+{% block javascripts %}
+<script src="{{ app.request.getBaseURL() }}/front/js/libs/modernizr.custom.js"></script>
 <script src="{{ app.request.getBaseURL() }}/front/js/libs/jquery-2.2.4.min.js"></script>
 <script src="{{ app.request.getBaseURL() }}/front/js/libs/bootstrap.min.js"></script>
 <script src="{{ app.request.getBaseURL() }}/front/js/libs/owl.carousel.min.js"></script>
@@ -188,5 +195,6 @@
         });
     });
 </script>
+{% endblock %}
 </body>
 </html>
