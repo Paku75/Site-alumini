@@ -4,10 +4,18 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ 	 * @UniqueEntity("email",
+	  *     message="Adresse email utilisée."
+	 *)
+	 * @UniqueEntity("login",
+	  *     message="Login utilisé."
+	 *)
  */
 class User 
 {
@@ -15,6 +23,7 @@ class User
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+
      */
     private $id;
 
@@ -86,10 +95,9 @@ class User
     private $image;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name="email", type="string", length=255, unique=true)
+     * @Assert\Email
      */
-	 
-	 
     private $email;
 
     public function getId(): ?int

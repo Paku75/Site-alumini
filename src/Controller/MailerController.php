@@ -19,12 +19,17 @@ class MailerController extends AbstractController
         $email = (new Email())
             ->from('iticalumni@gmail.com')
             ->to('bmlaghui@gmail.com')
-            //->cc('cc@example.com')
+            //->cc('ptquen2957@gmail.com')
             //->bcc('bcc@example.com')
             //->replyTo('fabien@example.com')
             //->priority(Email::PRIORITY_HIGH)
             ->subject('Email envoyé depuis symfony!')
-            ->html('<p>YES ! DONE <3 </p>');
+            ->html('
+			
+			<p>YES ! DONE <3 </p>
+			<p>I\'m THE KING </p>
+			
+			');
 
         $mailer->send($email);
 		 return $this->redirectToRoute('security_registrationOk');
