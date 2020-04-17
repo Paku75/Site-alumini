@@ -12,8 +12,8 @@ use Symfony\Component\Security\Core\User\UserInterface;
  	 * @UniqueEntity("email",
 	  *     message="Adresse email utilisée."
 	 *)
-	 * @UniqueEntity("login",
-	  *     message="Login utilisé."
+	 * @UniqueEntity("username",
+	  *     message="Username utilisé."
 	 *)
  */
 class User implements UserInterface
@@ -79,14 +79,14 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $login;
+    private $username;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $mdp;
+    private $password;
 
-    public $confirm_mdp;
+    public $confirm_password;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
@@ -224,26 +224,29 @@ class User implements UserInterface
         return $this;
     }
 
-    public function getLogin(): ?string
+    public function getUsername(): ?string
     {
-        return $this->login;
+        return $this->username;
     }
 
-    public function setLogin(string $login): self
+    public function setUsername(string $username): self
     {
-        $this->login = $login;
+        $this->username = $username;
 
         return $this;
     }
-
-    public function getMdp(): ?string
+	
+	/**
+     * @see UserInterface
+     */
+    public function getPassword(): ?string
     {
-        return $this->mdp;
+        return $this->password;
     }
 
-    public function setMdp(string $mdp): self
+    public function setPassword(string $password): self
     {
-        $this->mdp = $mdp;
+        $this->password = $password;
 
         return $this;
     }
@@ -270,5 +273,36 @@ class User implements UserInterface
         $this->email = $email;
 
         return $this;
+    }
+	/**
+     * @see UserInterface
+     */
+    public function getRoles(): array
+    {
+        $roles = $this->roles;
+        // guarantee every user at least has ROLE_USER
+        $roles[] = 'ROLE_USER';
+        return array_unique($roles);
+    }
+    public function setRoles(array $roles): self
+    {
+        $this->roles = $roles;
+        return $this;
+    }
+    
+    /**
+     * @see UserInterface
+     */
+    public function getSalt()
+    {
+        // not needed for apps that do not check user passwords
+    }
+    /**
+     * @see UserInterface
+     */
+    public function eraseCredentials()
+    {
+        // If you store any temporary, sensitive data on the user, clear it here
+        // $this->plainPassword = null;
     }
 }

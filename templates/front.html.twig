@@ -17,6 +17,8 @@
 	<link rel="stylesheet" type="text/css" href="{{ app.request.getBaseURL() }}/front/css/um-fileupload.css" />	
 	<link rel="stylesheet" type="text/css" href="{{ app.request.getBaseURL() }}/front/css/um-styles.css" />
     <link rel="stylesheet" type="text/css" href="{{ app.request.getBaseURL() }}/front/css/um-profile.css" />
+	<link rel="stylesheet" type="text/css" href="{{ app.request.getBaseURL() }}/front/css/um-fonticons-fa.css" />
+	<link rel="stylesheet" type="text/css" href="{{ app.request.getBaseURL() }}/front/css/font-awesome.min.css" />
     {% endblock %}
 
     <title>.:: Commun'itic ::.</title>
@@ -51,8 +53,9 @@
                                     </form>
                                 </li>
                                 <li class="login">
-                                    <a href="login-page.html">Se connecter</a>
+                                    <a href="{{ path('security_login') }}">Se connecter/S'inscrire</a>
                                 </li>
+								
                             </ul>
                         </div>
                     </div>
@@ -61,33 +64,33 @@
             <div class="header-middle">
                 <div class="container">
                     <div class="logo hidden-sm hidden-xs">
-                        <a href="#"> <img src="{{ app.request.getBaseURL() }}/front/images/logo.png" alt="logo"></a>
+                        <a href="{{ path('home') }}"> <img src="{{ app.request.getBaseURL() }}/front/images/logo.png" alt="logo"></a>
                     </div>
                     <div class="menu">
                         <nav>
                             <ul class="nav navbar-nav">
                                <li>
-                                    <a href="about-us.html">COMMUN'ITIC</a>
+                                    <a href="{{ path('about') }}">COMMUN'ITIC</a>
                                 </li>
 								<li>
-                                    <a href="programs-events.html">ANNUAIRE</a>
+                                    <a href="{{ path('annuaire') }}">ANNUAIRE</a>
                                 </li>
                                 <li>
-                                    <a href="programs-events.html">EVENEMENTS</a>
+                                    <a href="{{ path('events') }}">EVENEMENTS</a>
                                 </li>
 
                                 <li>
-                                   <a href="alumni-story.html">BLOG</a>
+                                   <a href="{{ path('blogs') }}">BLOG</a>
                                 </li>
                                 <li>
-                                    <a href="career-opportunity.html">OFFRES</a>
+                                    <a href="{{ path('offres') }}">OFFRES</a>
                                 </li>
                             </ul>
                         </nav>
                     </div>
                     <div class="area-mobile-content visible-sm visible-xs">
                         <div class="logo-mobile">
-                            <a href="#"> <img src="images/logo-small.png" alt="logo"></a>
+                            <a href="{{ path('home') }}"> <img src="{{ app.request.getBaseURL() }}/front/images/logo-small.png" alt="logo"></a>
                         </div>
                         <div class="mobile-menu ">
                         </div>
@@ -114,14 +117,14 @@
                         <div class="col-md-4 col-sm-12 col-xs-12 animated footer-col">
                             <div class="contact-footer">
                                 <div class="logo-footer">
-                                    <a href="homepage-1.html"><img src="images/logo-footer.png" alt=""></a>
+                                    <a href="path('home')"><img src="{{ app.request.getBaseURL() }}/front/images/logo-footer.png" alt=""></a>
                                 </div>
                                 <div class="contact-desc">
                                     <p class="text-light">Réseaux des anciens étudiants de l'école ITIC Paris.</p>
                                 </div>
                                 <div class="contact-phone-email">
                                     <span class="contact-phone"><a href="#">+33 1 43 73 20 40</a></span>
-                                    <span class="contact-email"><a href="#">contact@alumni-iticparis.com</a></span>
+                                    <span class="contact-email"><a href="mailto:contact@alumni-iticparis.com">contact@alumni-iticparis.com</a></span>
                                 </div>
                             </div>
                         </div>
@@ -130,28 +133,28 @@
                                 <div class="row">
                                     <div class="col-sm-4 col-xs-12">
                                         <ul class="list-unstyled no-margin">
-                                            <li><a href="register-page.html">ACCEUIL</a></li>
-                                            <li><a href="career-opportunity.html">COMMUNITIC</a></li>
-                                            <li><a href="alumni-story.html">EVENEMENTS</a></li>
-                                            <li><a href="alumni-directory.html">BLOG</a></li>
-                                            <li><a href="alumni-directory.html">OFFRES</a></li>
+                                            <li><a href="{{ path('home') }}">ACCEUIL</a></li>
+                                            <li><a href="{{ path('about') }}">COMMUNITIC</a></li>
+                                            <li><a href="{{ path('events') }}">EVENEMENTS</a></li>
+                                            <li><a href="{{ path('blogs') }}">BLOG</a></li>
+                                            <li><a href="{{ path('offres') }}">OFFRES</a></li>
 
                                         </ul>
                                     </div>
                                     
                                     <div class="col-sm-4 col-xs-12">
                                         <ul class="list-unstyled no-margin">
-                                            <li><a href="event-single.html">CONNEXION</a></li>
-                                            <li><a href="galery.html">INSCRIPTION</a></li>
+                                            <li><a href="{{ path('security_login') }}">CONNEXION</a></li>
+                                            <li><a href="{{ path('registration_registration') }}">INSCRIPTION</a></li>
 
                                         </ul>
                                     </div>
                                     
                                     <div class="col-sm-4 col-xs-12">
                                         <ul class="list-unstyled no-margin">
-                                            <li><a href="job-detail.html">FAQ</a></li>
-                                            <li><a href="about-us.html#contacts">TERMES GENERALES</a></li>
-                                            <li><a href="blog-single-fullwith.html">CONTACT</a></li>
+                                            <li><a href="{{ path('faq') }}">FAQ</a></li>
+                                            <li><a href="{{ path('rgpd') }}">TERMES GENERALES</a></li>
+                                            <li><a href="{{ path('contact') }}">CONTACT</a></li>
                                         </ul>
                                     </div>
                                 </div>

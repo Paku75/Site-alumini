@@ -451,11 +451,11 @@ a:hover, a:active, a:focus {
   padding-right: 0;
 }
 .top-nav ul .login a {
-  background-color: #3a539b;
+  background-color: #f7ca18;
   height: 23px;
   margin: 8px 0;
   line-height: 2.2;
-  color: #c0c6da;
+  color: #000000;
   padding: 0 15px;
   border-radius: 3px;
   font-size: 10px;
@@ -2259,7 +2259,7 @@ a:hover, a:active, a:focus {
 }
 @media (min-width: 768px) {
   .job-detail .brand {
-    width: 60%;
+    width: 100%;
   }
   .job-detail .brand .brand-content {
     padding: 40px;

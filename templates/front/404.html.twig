@@ -1,0 +1,17 @@
+{% extends 'front.html.twig' %}
+{% block body %}
+    <!--Begin content wrapper-->
+    <div class="content-wrapper">
+        <div class="container">
+            <div class="access-denied text-center">
+                <img src="{{ app.request.getBaseURL() }}/front/images/clock-access.png" alt="">
+                <h2 class="heading-light">Page en cours de construction</h2>
+                <div class="box-text">
+                    <h4 class="heading-light">Veuillez réessayer prochaienement! </h4>
+                    <a class="btn btn-info text-regular text-uppercase">Aller vers l'acceuil</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--End content wrapper-->
+{% endblock %}

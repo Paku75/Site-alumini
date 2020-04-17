@@ -29,7 +29,7 @@ class SecurityController extends AbstractController
         $form = $this->createFormBuilder($user)
             ->add('nom')
             ->add('prenom')
-            ->add('login')
+            ->add('username')
             ->add(
                 'email',
                 EmailType::class,
@@ -38,7 +38,7 @@ class SecurityController extends AbstractController
                 ],
 
             )
-            ->add('mdp', RepeatedType::class, [
+            ->add('password', RepeatedType::class, [
                 'type' => PasswordType::class,
                 'invalid_message' => 'Mot de passe non identiques',
                 'options' => ['attr' => ['class' => 'input-box']],
@@ -54,8 +54,8 @@ class SecurityController extends AbstractController
             $nom = $form['nom']->getData();
             $prenom = $form['prenom']->getData();
             $mail = $form['email']->getData();
-            $login = $form['login']->getData();
-            $mdp = $form['mdp']->getData();
+            $username = $form['username']->getData();
+            $password = $form['password']->getData();
             $email = (new Email())
                 ->from('iticalumni@gmail.com')
                 ->to($mail)
@@ -68,18 +68,14 @@ class SecurityController extends AbstractController
 			<p>
 			   <b>Félicitaions</b>, vous êtes inscrit au site web des anciens étudiants de l'école ITIC Paris
 			</p>
-			<p>Votre login est : {$login}</p>
-
-			
-			<p>
-				Mot de passe: {$mdp}
-			</p><br/>
+			<p>Votre username est : {$username}</p>
+			<br/>
 			<p>Vous pouvez dès maintenant vous connecter sur notre site et compléter votre profil</p>
 			<p>L'équipe COMMUN'ITIC vous souhaite une agréable journée ! <p>
 			<p>A très bientôt sur notre site communitic.com </p>
 			<h5>PS: Soyez vigilants et ne communiquez pas ces données à personne</h5>
 
-			
+
 			");
 
             $mailer->send($email);
@@ -100,14 +96,7 @@ class SecurityController extends AbstractController
         return $this->render('registration/registrationOk.html.twig');
     }
 
-    /**
-     * @Route("/termsofuse", name="registration_rgpd")
-     */
-    public function registrationRgpd()
-    {
-        return $this->render('registration/rgpd.html.twig');
-    }
-
+    
     /**
      * @Route("/login", name="security_login")
      */
