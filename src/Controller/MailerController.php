@@ -18,7 +18,7 @@ class MailerController extends AbstractController
     {
         $email = (new Email())
             ->from('iticalumni@gmail.com')
-            ->to('bmlaghui@gmail.com')
+            ->to('ptquyen2957@gmail.com')
             //->cc('ptquen2957@gmail.com')
             //->bcc('bcc@example.com')
             //->replyTo('fabien@example.com')
@@ -26,7 +26,7 @@ class MailerController extends AbstractController
             ->subject('Email envoyé depuis symfony!')
             ->html('
 			
-			<p>YES ! DONE <3 </p>
+			<p>Bonjour  </p>
 			<p>I\'m THE KING </p>
 			
 			');

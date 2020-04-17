@@ -6,7 +6,7 @@
 
 <div class="account-page login text-center">
             <div class="container">
-                <div class="account-title">
+                <div class="entry-header text-center">
                     <h4 class="heading-light">Bienvenue cher ITICien(ne)</h4>
                 </div>
                 <div class="account-content">
@@ -17,11 +17,24 @@
                         <div class="input-box password">
                             <input type="text" required name="_password" placeholder="Mot de passe">
                         </div>
+						<div >
+                            <input type="checkbox" required name="_terms" > J'accepte <a href="{{ path('registration_rgpd') }}"> les conditions générales d'utilisation et de protection des données personelles</a> </input>
+                        </div>
                         <div class="buttons-set">
-                            <button type="submit" class="bnt bnt-theme text-regular text-uppercase">Se connecter</button>
+                            <button type="submit" class="btn btn-info text-regular text-uppercase">Se connecter</button>
+							<a class="btn btn-theme text-regular text-uppercase" href="{{ path('registration_registration') }}" >S'inscrire</a>
+							
+                        </div>
+						 <div class="buttons-set">
+                            <a href="{{ path('security_reset') }}">Mot de passe oublié?</button>
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+		
+		
+		
+		
 {% endblock %}
+

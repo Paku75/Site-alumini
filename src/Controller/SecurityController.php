@@ -31,5 +31,11 @@ class SecurityController extends AbstractController
      */
     public function logout()
     {}
+	
+   /**
+     * @Route("/reset-password", name="security_reset")
+     */
+    public function resetPwd()
+    {}
    
 }
