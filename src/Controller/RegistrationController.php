@@ -83,7 +83,7 @@ $form->handleRequest($request);
 			");
 
         $mailer->send($email);
-
+        return $this->redirectToRoute('security_registrationOk');
         }
 
         return $this->render('registration/registration.html.twig', [
