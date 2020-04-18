@@ -59,10 +59,7 @@ class SecurityController extends AbstractController
             $email = (new Email())
                 ->from('iticalumni@gmail.com')
                 ->to($mail)
-                //->cc('ptquen2957@gmail.com')
-                //->bcc('bcc@example.com')
-                //->replyTo('fabien@example.com')
-                //->priority(Email::PRIORITY_HIGH)
+                ->priority(Email::PRIORITY_HIGH)
                 ->subject('Confirmation d\'inscription sur COMMUNITIC ')
                 ->html("<h3>Bonjour {$nom} {$prenom}</h3>
 			<p>
